@@ -16,7 +16,8 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "正在初始化napcat容器..."
-init_cmd="apt update -y && \
+init_cmd="sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
+apt update -y && \
 apt install -y sudo curl && \
 curl -o napcat.sh https://nclatest.znin.net/NapNeko/NapCat-Installer/main/script/install.sh && \
 sudo bash napcat.sh --docker n && \
